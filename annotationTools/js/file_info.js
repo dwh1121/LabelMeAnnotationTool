@@ -316,8 +316,9 @@ function file_info() {
     
     /** Changes current URL to include collection, directory, and image
     name information.  Returns false. */
-    this.SetURL = function (url) {
-        this.FetchImage();
+    this.SetURL = function (isNext, url) {
+        if(isNext) this.FetchImage();
+        else this.FetchPrevImage();
 
 	// Get base LabelMe URL:
         var idx = url.indexOf('?');

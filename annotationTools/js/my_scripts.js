@@ -80,7 +80,7 @@ function ShowPrevImage() {
   RemoveObjectList();
 
   // Get a new image and reset URL to reflect new image:
-  main_media.GetFileInfo().SetURL(document.URL);
+  main_media.GetFileInfo().SetURL(false, document.URL);
   // if (video_mode) main_media.GetFileInfo().SetURL(document.URL);
   // else {
   //   main_media.GetFileInfo().FetchPrevImage();
@@ -99,7 +99,7 @@ function ShowNextImage() {
   RemoveObjectList();
 
   // Get a new image and reset URL to reflect new image:
-  main_media.GetFileInfo().SetURL(document.URL);
+  main_media.GetFileInfo().SetURL(true, document.URL);
   // if (video_mode) main_media.GetFileInfo().SetURL(document.URL);
   // else {
   //   main_media.GetFileInfo().FetchImage();

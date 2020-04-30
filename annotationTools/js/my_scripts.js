@@ -83,7 +83,7 @@ function ShowPrevImage() {
   if (video_mode) main_media.GetFileInfo().SetURL(false, document.URL);
   else {
     main_media.GetFileInfo().SetURL(false, document.URL);
-    main_media.GetFileInfo().FetchPrevImage();
+    // main_media.GetFileInfo().FetchPrevImage();
     LoadNewMedia();
   }
 }
@@ -102,7 +102,7 @@ function ShowNextImage() {
   if (video_mode) main_media.GetFileInfo().SetURL(true, document.URL);
   else {
     main_media.GetFileInfo().SetURL(true, document.URL);
-    main_media.GetFileInfo().FetchImage();
+    // main_media.GetFileInfo().FetchImage();
     LoadNewMedia();
   }
 }

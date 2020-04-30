@@ -330,11 +330,12 @@ function file_info() {
         var extra_field = '';
         if(username != 'anonymous') extra_field = '&username=' + username;
         
-        if(this.mode=='i') window.location = url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field;
-        else if(this.mode=='im') window.location = url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field;
-        else if(this.mode=='mt') window.location = url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field;
-        else if(this.mode=='c') window.location = url + '?mode=' + this.mode + '&username=' + username + '&collection=' + this.collection + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field;
-        else if(this.mode=='f') window.location = url + '?mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field;
+        if(this.mode=='i') window.history.pushState('page2', 'Title', url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
+        else if(this.mode=='im') window.history.pushState('page2', 'Title', url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
+        else if(this.mode=='mt') window.history.pushState('page2', 'Title', url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
+        else if(this.mode=='c') window.history.pushState('page2', 'Title', url + '?mode=' + this.mode + '&username=' + username + '&collection=' + this.collection + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
+        else if(this.mode=='f') window.history.pushState('page2', 'Title', url + '?mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
+
         return false;
     };
     

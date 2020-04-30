@@ -80,12 +80,12 @@ function ShowPrevImage() {
   RemoveObjectList();
 
   // Get a new image and reset URL to reflect new image:
-  main_media.GetFileInfo().SetURL(false, document.URL);
-  // if (video_mode) main_media.GetFileInfo().SetURL(document.URL);
-  // else {
-  //   main_media.GetFileInfo().FetchPrevImage();
-  //   LoadNewMedia();
-  // }
+  if (video_mode) main_media.GetFileInfo().SetURL(false, document.URL);
+  else {
+    main_media.GetFileInfo().SetURL(false, document.URL);
+    main_media.GetFileInfo().FetchPrevImage();
+    LoadNewMedia();
+  }
 }
 function ShowNextImage() {
   if(wait_for_input) return WaitForInput();
@@ -99,12 +99,12 @@ function ShowNextImage() {
   RemoveObjectList();
 
   // Get a new image and reset URL to reflect new image:
-  main_media.GetFileInfo().SetURL(true, document.URL);
-  // if (video_mode) main_media.GetFileInfo().SetURL(document.URL);
-  // else {
-  //   main_media.GetFileInfo().FetchImage();
-  //   LoadNewMedia();
-  // }
+  if (video_mode) main_media.GetFileInfo().SetURL(true, document.URL);
+  else {
+    main_media.GetFileInfo().SetURL(true, document.URL);
+    main_media.GetFileInfo().FetchImage();
+    LoadNewMedia();
+  }
 }
 
 function InsertServerLogData(modifiedControlPoints) {

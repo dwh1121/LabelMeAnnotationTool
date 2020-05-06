@@ -16,6 +16,8 @@ function file_info() {
     
     this.page_in_use = 0; // Describes if we already see an image.
     this.dir_name = null;
+    this.objects = null;
+    this.actions = null;
     this.im_name = null;
     this.collection = 'LabelMe';
     this.mode = 'i'; //initialize to picture mode
@@ -75,6 +77,12 @@ function file_info() {
                 }
                 if(par_field=='folder') {
                     this.dir_name = par_value;
+                }
+                if(par_field=='objects') {
+                    this.objects = par_value;
+                }
+                if(par_field=='actions') {
+                    this.actions = par_value;
                 }
                 if(par_field=='image') {
                     this.im_name = par_value;
@@ -329,6 +337,9 @@ function file_info() {
         // Include username in URL:
         var extra_field = '';
         if(username != 'anonymous') extra_field = '&username=' + username;
+
+        if(this.objects != null) extra_field += '&objects=' + this.objects;
+        if(this.actions != null) extra_field += '&actions=' + this.actions;
         
         if(this.mode=='i') window.history.pushState('page2', 'Title', url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);
         else if(this.mode=='im') window.history.pushState('page2', 'Title', url + '?collection=' + this.collection + '&mode=' + this.mode + '&folder=' + this.dir_name + '&image=' + this.im_name + extra_field);

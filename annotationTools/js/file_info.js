@@ -421,6 +421,10 @@ function file_info() {
 	console.log('prefetching')
 	im_req.onload = function(e){
 		if(im_req.status==200) {
+            im_counts = im_req.responseXML.getElementsByTagName("im_counts")[0].firstChild.nodeValue;
+            anno_counts = im_req.responseXML.getElementsByTagName("anno_counts")[0].firstChild.nodeValue;
+            $("#label_progress").text(anno_counts + " / " + im_counts);
+            
 		    dir_name = im_req.responseXML.getElementsByTagName("dir")[0].firstChild.nodeValue;
 		    im_name = im_req.responseXML.getElementsByTagName("file")[0].firstChild.nodeValue;
 		    path =  'Images/' + dir_name + '/' + im_name;

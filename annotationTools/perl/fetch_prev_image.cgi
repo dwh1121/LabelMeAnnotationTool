@@ -16,6 +16,9 @@ my $image = $query->param("image");
 
 my $im_dir;
 my $im_file;
+
+my $im_counts;
+my $anno_counts;
 if($mode eq "mt") {
     my $fname = $LM_HOME . "annotationCache/DirLists/$collection.txt";
     
@@ -105,9 +108,22 @@ elsif($mode eq "c") {
     $im_dir = $all_folders[$c-1];
 }
 elsif($mode eq "f") {
+    if (-d $LM_HOME . "Annotations/$folder") {
+        opendir(DIR,$LM_HOME . "Annotations/$folder") || die("Cannot read folder $LM_HOME/Annotations/$folder");
+        my @anno_files = readdir(DIR);
+        closedir(DIR);
+        $anno_counts = scalar(@anno_files)-2;
+        $anno_counts = scalar(@anno_files)-2;
+    }
+    else {
+        $anno_counts = 0;
+    }
+
     opendir(DIR,$LM_HOME . "Images/$folder") || die("Cannot read folder $LM_HOME/Images/$folder");
     my @all_images = readdir(DIR);
     closedir(DIR);
+
+    $im_counts = scalar(@all_images)-2;
 
     my $do_rand = 1;
     my $i = 0;
@@ -138,4 +154,10 @@ elsif($mode eq "f") {
 
 # Send back data:
 print "Content-type: text/xml\n\n" ;
-print "<out><dir>$im_dir</dir><file>$im_file</file></out>";
+
+if($mode eq "f") {
+    print "<out><dir>$im_dir</dir><file>$im_file</file><im_counts>$im_counts</im_counts><anno_counts>$anno_counts</anno_counts></out>";
+}
+else {
+    print "<out><dir>$im_dir</dir><file>$im_file</file></out>";
+}
